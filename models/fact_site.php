@@ -160,5 +160,8 @@ class FactSite extends SiteFactoryAppModel
 		return $this->delete($id);
 	}
 
+	function listSites() {
+		return $this->find('all', array('fields' => array('mexc_space_id', 'name'),'contain'=> false));
+	}
 }
 ?>
