@@ -65,54 +65,19 @@ switch ($type[0])
 	break;
 	
 	case 'mini_preview':
-		echo $this->Bl->sdiv(array('class' => 'fact_site_minipreview ' . $data['FactSite']['mexc_space_id']));
-			
-			
-			$content = '';
-			$content .= $this->Bl->sdiv(array('class' => 'img_header'));
-				if (!empty($data['FactSite']['picture_id']))
-					$content .= $this->Bl->div(
-						array('class' => 'image'),
-						array(),
-						$this->Bl->anchor(array(), array(
-								'url' => array('plugin' => 'site_factory', 'controller' => 'fact_sites', 'action' => 'index'),
-								'space' => $data['FactSite']['mexc_space_id']
-							),
-							$this->Bl->img(array(), array('id' => $data['FactSite']['picture_id'], 'version' => 'cropped'))
-						)
-					);
-			$content .= $this->Bl->ediv();
-			
-			if (!empty($data['FactSite']['img2_id']))
-				$anchorLabel = $this->Bl->img(array('alt' => $data['FactSite']['name']), array('id' => $data['FactSite']['img2_id'], 'version' => ''));
-			else
-				$anchorLabel = $this->Bl->spanDry($data['FactSite']['name']);
-			
-			$content .= $this->Bl->div(
-				array('class' => 'logo'),
-				array(),
-				$this->Bl->anchor(array(), array(
-						'url' => array('plugin' => 'site_factory', 'controller' => 'fact_sites', 'action' => 'index'),
-						'space' => $data['FactSite']['mexc_space_id']
-					),
-					$anchorLabel
-				)
-			);
-			
-			echo $content;
-			/*
-			echo $this->Bl->anchor(array(), array(
-					'url' => array('plugin' => 'site_factory', 'controller' => 'fact_sites', 'action' => 'index'),
-					'space' => $data['FactSite']['mexc_space_id']
-				),
-				$anchorLabel
-			);
-			*/
-			
-			echo $this->Bl->sdiv(array('class' => 'fact_site_description'));
-				echo $this->Bl->paraDry(explode("\n", $data['FactSite']['mini_description']));
-			echo $this->Bl->ediv();	
-			
+		echo $this->Bl->sdiv(array('class' => 'row fact_site_minipreview ' . $data['FactSite']['mexc_space_id']. ' '.$data['KLASS']));
+			echo $this->Bl->sdiv(array('class' => 'col-xs-9'));
+				echo $this->Bl->h3Dry($data['FactSite']['name']);
+			echo $this->Bl->ediv();
+			echo $this->Bl->sdiv(array('class' => 'col-xs-9'));
+				echo $this->Bl->pDry($data['FactSite']['description']);
+			echo $this->Bl->ediv();
+			echo $this->Bl->sdiv(array('class' => 'col-xs-3'));
+			echo $this->Bl->anchor(array('class' => 'visit-proj'), array(
+				'url' => array('plugin' => 'site_factory', 'controller' => 'fact_sites', 'action' => 'index'),
+				'space' => $data['FactSite']['mexc_space_id']
+			), 'Visitar projeto');
+			echo $this->Bl->ediv();
 		echo $this->Bl->ediv();
 	break;
 }
