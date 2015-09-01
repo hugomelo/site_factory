@@ -12,5 +12,5 @@
  * @link          https://github.com/museudecienciasunicamp/site_factory.git Site Factory public repository
  */
 
-class SiteFactoryAppController extends MexcAppController {
+class SiteFactoryAppController extends RedeAppController {
 }
