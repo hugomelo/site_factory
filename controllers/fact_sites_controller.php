@@ -55,25 +55,11 @@ class FactSitesController extends SiteFactoryAppController
 		if (empty($site))
 			$this->cakeError('error404');
 		
-		$twitter_results = array();
-		if (!empty($site['FactSite']['twitter_hashtag']))
-		{
-			App::import('Core', 'HttpSocket');
-			$HttpSocket = new HttpSocket();
-			$results = $HttpSocket->get('http://search.twitter.com/search.json', 'q=%23' . $site['FactSite']['twitter_hashtag']);
-			if ($HttpSocket->response['status']['code'] == 200)
-			{
-				$results = json_decode($results, true);
-				$twitter_results = array_slice($results['results'], 0, 3);
-			}
-		}
+		$this->loadModel('UnifiedSearch.SblSearchItem');
+		$paging = array();
+		$items = $this->SblSearchItem->getSearchResults("", array('mexc_space_id' => $this->currentSpace), $paging);
 		
-		$this->set(compact('site', 'twitter_results'));
-		
-		
-		$this->loadModel('MexcHighlights.MexcHighlightedContent');
-		$highlighted = $this->MexcHighlightedContent->getHightlightedsFrom($this->currentSpace, 2);
-		$this->set(compact('highlighted'));
+		$this->set(compact('site', 'items'));
 		
 		foreach ($site['FactSection'] as $section)
 		{
