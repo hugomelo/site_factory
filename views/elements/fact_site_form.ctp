@@ -62,30 +62,7 @@ echo $this->Buro->sform(array(), array(
 				)
 			);
 			
-			echo $this->Buro->input(
-				array(),
-				array(
-					'type' => 'textarea',
-					'fieldName' => 'mini_description',
-					'label' => __d('fact_site', 'form - mini_description label', true),
-					'instructions' => __d('fact_site', 'form - mini_description instructions', true)
-				)
-			);
-			
 		echo $this->Buro->einput();
-		
-		
-		echo $this->Buro->input(
-			array(),
-			array(
-				'type' => 'content_stream',
-				'label' => __d('fact_site', 'form - about_content_stream_id label', true),
-				'instructions' => __d('fact_site', 'form - about_content_stream_id instructions', true),
-				'options' => array(
-					'foreignKey' => 'about_content_stream_id'
-				)
-			)
-		);
 		
 		
 		echo $this->Buro->input(
