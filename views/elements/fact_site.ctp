@@ -88,13 +88,13 @@ switch ($type[0])
 					echo $this->Bl->h4(array('class' => 'project-title'), array(), "Projeto");
 					echo $this->Bl->h3(array('class' => 'project-title-inside'), array(), $site['FactSite']['name']);
 				echo $this->Bl->ediv(); // close header-data
+				echo $this->Bl->sdiv(array('class' => 'fact_site_menu'));
+					echo $this->Bl->menu(array(), array('menuLevel' => 3));
+				echo $this->Bl->ediv();
 			echo $this->Bl->eboxContainer(); // close header
 		echo $this->Bl->erow(); // close row
 
 		echo $this->Bl->ediv(); // close container || YES, it was needed for showing the about_project
 
-		echo $this->Bl->sdiv(array('class' => 'fact_site_menu'));
-			echo $this->Bl->menu(array(), array('menuLevel' => 3));
-		echo $this->Bl->ediv();
 	break;
 }
