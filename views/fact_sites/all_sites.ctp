@@ -14,17 +14,15 @@
 
 echo $this->Bl->br();
 
+echo $this->Bl->h1Dry("Nossos projetos");
 foreach ($sites as $n => $site)
 {
-	$odd = ($n+1)%2;
-	
-	if ($odd)
-		echo $this->Bl->sboxContainer(array(), array('size' => array('M' => 7)));		
-		echo $this->Bl->sbox(array(), array('size' => array('M' => 5, 'g' => -1), 'type' => 'cloud'));
-			echo $this->Jodel->insertModule('SiteFactory.FactSite', array('preview'), $site);
-		echo $this->Bl->ebox();
-		
-	if ($odd)
-		echo $this->Bl->eboxContainer();
-
+	echo $this->Bl->srow(array('class' => 'home'));
+		echo $this->Bl->sdiv(array('class' => 'projects col-xs-12'));
+			echo $this->Bl->sdiv(array('class' => 'project-desc')); {
+				$site['KLASS'] = 'active';
+				echo $this->Jodel->insertModule('SiteFactory.FactSite', array('mini_preview'), $site);
+			} echo $this->Bl->ediv();
+		echo $this->Bl->ediv();
+	echo $this->Bl->erow();
 }
